@@ -85,6 +85,8 @@ Route::namespace('Customer')->prefix('pages')->group(function() {
     Route::get('orders', 'HomeController@order')->name('home.order');
     Route::get('order-detail/{id}', 'HomeController@orderDetail')->name('home.order_detail');
     Route::post('cancel-orders', 'HomeController@orderCancel')->name('home.order_cancel');
+    Route::get('/changePassword','HomeController@showChangePasswordForm')->name('home.password');
+    Route::post('/changePassword','HomeController@changePassword')->name('changePassword');
 });
 
 Route::namespace('Customer')->prefix('comment')->group(function () {

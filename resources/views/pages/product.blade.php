@@ -50,7 +50,20 @@
                                 <div class="col-md-6 col-sm-6">
                                     <div class="image-product">
                                         <div class="image-gallery-0">
-                                            <img src="{{ config('setting.image_folder') . $product->thumbnail }}">
+                                            @if($product->images->isNotEmpty())
+                                              <ul id="imageGallery-0">
+                                                <li data-thumb="{{ config('setting.image_folder') . $product->thumbnail }}" data-src="{{ config('setting.image_folder') . $product->thumbnail }}">
+                                                    <img src="{{ config('setting.image_folder') . $product->thumbnail }}" />
+                                                </li>
+                                                @foreach($product->images as $image)
+                                                    <li data-thumb="{{ config('setting.image_folder') . $image->url }}" data-src="{{ config('setting.image_folder') . $image->url }}">
+                                                        <img src="{{ config('setting.image_folder') . $image->url }}}" />
+                                                    </li>
+                                                @endforeach
+                                              </ul>
+                                            @else
+                                              <img src="{{ config('setting.image_folder') . $product->thumbnail }}">
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

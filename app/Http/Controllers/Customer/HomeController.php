@@ -20,6 +20,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use App\Notifications\CommentNotification;
 use App\Models\User;
 use DB;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -248,5 +249,29 @@ class HomeController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    public function showChangePasswordForm(){
+        return view('auth.changepassword');
+    }
+
+    public function changePassword(ChangePasswordRequest $request){
+
+        if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
+
+            return redirect()->back()->with("error", trans('customer.current_password_error'));
+        }
+
+        if(strcmp($request->get('current-password'), $request->get('new-password')) == 0){
+
+            return redirect()->back()->with("error", trans('customer.new_password_error'));
+        }
+
+        $user = Auth::user();
+        $user->password = bcrypt($request->get('new-password'));
+        $user->save();
+
+        return redirect()->back()->with("success", trans('customer.password_success'));
+
     }
 }

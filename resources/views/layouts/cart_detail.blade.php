@@ -21,7 +21,7 @@
                         <div class="item product-{{ $key }}">
                             <div class="image-product">
                                 <a href="{{ route('home.show', $item['id']) }}" target="_blank" title="{{ $item['product']['name'] . ' - ' . str_replace('"', " ", $item['list_attributes']) }}">
-                                    <img src="{{ config('setting.image_folder') . $item['product']['thumbnail'] }}">
+                                    <img src="{{ asset(config('config.images_folder') . $item['product']['thumbnail']) }}">
                                 </a>
                             </div>
                             <div class="info-product">

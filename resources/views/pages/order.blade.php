@@ -109,7 +109,7 @@
                                         @foreach ($order->orderItems as $key => $orderItem)
                                             <tr>
                                                 <td class="text-center">{{ $key + 1 }}</td>
-                                                <td class="text-center"><a href="" ><img src="{{ asset($orderItem->productDeltail->product->thumbnail) }}" alt=""  height="55px"></a></td>
+                                                <td class="text-center"><a href="" ><img src="{{ asset( config('config.images_folder') . $orderItem->productDeltail->product->thumbnail) }}" alt=""  height="55px"></a></td>
                                                 <td class="text-center">{{ $orderItem->productDeltail->product->name }}</td>
                                                 <td class="text-center">{{ str_replace(['{', '}', '"'], " ", $orderItem->productDeltail->list_attributes) }}</td>
                                                 <td class="text-center">{{ $orderItem->quantity }}</td>
@@ -124,7 +124,7 @@
                     <div class="col-md-3">
                         <div class="online_support">
                             <h2 class="title">{{ trans('customer.ready') }}<br>{{ trans('customer.help_you') }}</h2>
-                            <img src="{{ asset(config('config.suport_online')) }}">
+                            <img src="{{ asset(config('config.support_online')) }}">
                             <h3 class="sub_title">{{ trans('customer.call_to_support') }}</h3>
                             <div class="phone">
                                 <a href="" >{{ config('config.phone') }}</a>

@@ -67,3 +67,4 @@
         </div>
     @endif
 </div>
+<script src="{{ asset('js/customer/pages/cart.js') }}"></script>

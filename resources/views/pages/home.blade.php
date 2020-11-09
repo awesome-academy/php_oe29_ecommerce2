@@ -8,7 +8,7 @@
                     <div class="content-advertise">
                         <div id="slide-advertise" class="owl-carousel">
                             @foreach ($slides as $slide)
-                                <img src=" {{ asset(config('config.images_folder') . $slide->image) }}"  height="310px" class="slide-advertise-inner"  data-dot="<button>{{ $slide->title }}</button>">
+                                <img src="{{ asset(config('config.images_folder') . $slide->image) }}"  height="310px" class="slide-advertise-inner"  data-dot="<button>{{ $slide->title }}</button>">
                             @endforeach
                         </div>
                         <div class="custom-dots-slide-advertises"></div>

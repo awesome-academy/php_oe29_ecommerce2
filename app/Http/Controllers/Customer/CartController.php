@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Notifications\OrderNotification;
 use Exception;
 
 class CartController extends Controller
@@ -141,7 +142,7 @@ class CartController extends Controller
                 $supplier['totalPrice'] = $cartItem['price'] * $cartItem['qty'];
                 array_push($supplier['items'], $cartItem);
 
-                $listSupplierWithTheirItems = array_add($listSupplierWithTheirItems, $supplierId, $supplier);
+                $listSupplierWithTheirItems = Arr::add($listSupplierWithTheirItems, $supplierId, $supplier);
             } else {
                 $listSupplierWithTheirItems[$supplierId]['totalWeight'] += $cartItem['product']['weight'] * $cartItem['qty'];
                 $listSupplierWithTheirItems[$supplierId]['totalPrice'] += $cartItem['price'] * $cartItem['qty'];
@@ -207,6 +208,16 @@ class CartController extends Controller
             DB::rollBack();
             Alert::error(trans('sentences.order_fail'));
         }
+
+        $data = [
+            'status' => config('config.order_status_pending_name'),
+            'class' => config('config.order_status_pending_class'),
+            'icon' => config('config.order_status_pending_icon'),
+            'created_at' => Carbon::now()->toDateTimeString(),
+            'order_id' => '',
+        ];
+
+        Auth::user()->notify(new OrderNotification($data));
 
         return redirect()->route('home.index');
     }

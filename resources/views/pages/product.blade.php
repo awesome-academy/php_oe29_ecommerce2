@@ -50,7 +50,7 @@
                                 <div class="col-md-6 col-sm-6">
                                     <div class="image-product">
                                         <div class="image-gallery-0">
-                                            <img src="{{ config('setting.image_folder') . $product->thumbnail }}">
+                                            <img src="{{ asset(config('config.images_folder') . $product->thumbnail) }}">
                                         </div>
                                     </div>
                                 </div>
@@ -105,7 +105,8 @@
                                             <input type="text" name="product_detail_id" id="product_detail_id" value="{{ $activeAttribute['id'] }}" hidden="">
                                             <div class="row">
                                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-                                                    <button type="submit" class="btn btn-lg btn-gray">
+                                                    <button type="button" data-role="addtocart" class="btn btn-lg btn-gray btn-cart btn_buy buy_now"
+                                                    data-url="{{ route('cart.add') }}" data-url2="{{ route('cart.show_detail') }}">
                                                         <i class="far fa-money-bill-alt"></i>
                                                         {{ trans('customer.buy_now') }}
                                                     </button>
@@ -365,7 +366,7 @@
                                             <a href="" title="">
                                                 <div class="product-content">
                                                     <div class="image">
-                                                        <img src=" {{ config('setting.image_folder') . $suggestproduct->thumbnail }}" class="img-fluid" width="225px" >
+                                                        <img src="{{ asset(config('config.images_folder') . $product->thumbnail) }}" class="img-fluid" width="225px" >
                                                     </div>
                                                     <div class="content">
                                                         <h3 class="title">{{ $suggestproduct->name }}</h3>

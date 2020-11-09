@@ -6,7 +6,7 @@
                     @foreach ($products as $product)
                         <li class="item productid-1">
                             <a class="product-image" href="{{ route('home.show', $product->id) }}" >
-                                <img alt="" src="{{ asset($product->thumbnail) }}" width="80">
+                                <img alt="" src="{{ asset(config('config.images_folder') . $product->thumbnail) }}" width="80" height="80">
                             </a>
                             <div class="detail-item">
                                 <div class="product-details">

@@ -100,6 +100,14 @@
                                                     <a href=""><i class="fas fa-user-cog"></i> {{ trans('customer.manage_account') }}
                                                     </a>
                                                 </li>
+                                                <li class="">
+                                                    <a href="{{ route('change_language', ['en']) }}"><i class="fa fa-language"></i> {{ trans('supplier.english') }}
+                                                    </a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="{{ route('change_language', ['vi']) }}"><i class="fa fa-language"></i> {{ trans('supplier.vietnam') }}
+                                                    </a>
+                                                </li>
                                             @endif
                                             <li>
                                                 <a href="#">

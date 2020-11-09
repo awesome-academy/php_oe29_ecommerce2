@@ -102,6 +102,27 @@ $(document).ready(function() {
         });
     });
 
+    $('button.buy_now').click(function() {
+        var url = $(this).attr('data-url');
+        var url2 = $(this).attr('data-url2');
+        $.ajax({
+            url: url,
+            type: 'GET',
+            data: $('.product_detail_form').serialize(),
+            success: function(data) {
+                window.location = url2;
+            },
+            error: function(data) {
+                var errors = data.responseJSON;
+                Swal.fire({
+                    title: errors.error,
+                    text: errors.msg,
+                    type: 'error',
+                })
+            }
+        });
+    });
+
     $(function() {
         $('.atribute').on('change', function(e) {
             $.ajax({

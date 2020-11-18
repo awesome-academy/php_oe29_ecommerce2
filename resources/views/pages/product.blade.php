@@ -70,7 +70,9 @@
                                         </div>
                                     </div>
                                     <div class="color-product">
-                                        <div class="title">{{ trans('customer.list_atribute') }}:</div>
+                                        @if ($groupAtribute != null)
+                                            <div class="title">{{ trans('customer.list_atribute') }}:</div>
+                                        @endif
                                         <div class="select-color">
                                             <div class="row">
                                                 <form class = "select_form">
@@ -79,9 +81,9 @@
                                                     @foreach ($groupAtribute as $key => $atributes)
                                                         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                                                             <div class="" can-buy="" data-qty="">
-                                                              <div class="">{{ $key }}</div>
+                                                              <div class="select-atribute">{{ $key }}</div>
                                                               <div class="">
-                                                                <select class = "atribute" name="{{ $key }}" data-url="{{ route('home.show_detail') }}">
+                                                                <select class = "atribute select-atribute" name="{{ $key }}" data-url="{{ route('home.show_detail') }}">
                                                                     @foreach ($atributes as $value)
                                                                         <option value="{{ $value }}"
                                                                             @if ($value == $activeAttribute[$key])

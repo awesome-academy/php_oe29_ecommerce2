@@ -111,7 +111,7 @@ $(document).ready(function() {
             }).done(function(res) {
                 var data = JSON.parse(res);
                 if (data[0]) {
-                    $('.price').html(data[0].price);
+                    $('.price').html(new Intl.NumberFormat('en-EN', { maximumSignificantDigits: 3 }).format(data[0].price));
                     $('.remaining').html(data[0].remaining);
                     $('#product_detail_id').val(data[0].id);
                     $('.vnd').css('display', 'inline');
